@@ -28,7 +28,6 @@ private:
 	string customerName;
 	string email;
 	Date dateJoined;
-	int testInt;
 };
 
 #endif /* CUSTOMER_HPP_ */
