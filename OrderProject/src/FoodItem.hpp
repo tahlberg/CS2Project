@@ -9,6 +9,7 @@
 #define FOODITEM_HPP_
 
 #include "OrderItem.hpp"
+#include "Date.hpp"
 
 class FoodItem: public OrderItem {
 public:

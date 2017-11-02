@@ -14,6 +14,13 @@ class ElectronicItem: public OrderItem {
 public:
 	ElectronicItem();
 	virtual ~ElectronicItem();
+	void setEType(Type);
+	void setWarrantyMonths(int);
+	Type getEType(void);
+	int getWarrantyMonths(void);
+private:
+	Type eType;
+	int warrantyMonths;
 };
 
 #endif /* ELECTRONICITEM_HPP_ */
