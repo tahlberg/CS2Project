@@ -7,12 +7,9 @@
 
 #ifndef ORDER_HPP_
 #define ORDER_HPP_
-#include "Date.hpp"
 #include "OrderItem.hpp"
 #include "Customer.hpp"
-#include <string>
 #include <vector>
-using namespace std;
 
 class Order {
 public:

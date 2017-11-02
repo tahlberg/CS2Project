@@ -7,8 +7,8 @@
 
 #ifndef CUSTOMER_HPP_
 #define CUSTOMER_HPP_
-#include <string>
 #include "Date.hpp"
+#include <string>
 using namespace std;
 
 class Customer {
