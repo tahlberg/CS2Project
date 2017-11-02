@@ -10,6 +10,13 @@
 #include <string>
 using namespace std;
 
+enum Type{
+	TV,
+	PS4,
+	DVDPlayer,
+	Phone
+};
+
 class OrderItem {
 public:
 	OrderItem();
