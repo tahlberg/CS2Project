@@ -28,3 +28,9 @@ string Date::getDateString(void){
 	return str;
 }
 
+Date::Date(int m, int d, int y){
+	this->month = m;
+	this->day = d;
+	this->year = y;
+}
+

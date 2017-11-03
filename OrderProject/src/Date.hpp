@@ -19,6 +19,7 @@ public:
 	int day;
 	int year;
 	string getDateString(void);
+	Date(int, int, int);
 };
 
 #endif /* DATE_HPP_ */
