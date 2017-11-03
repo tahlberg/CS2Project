@@ -21,10 +21,10 @@ Date::~Date() {
 string Date::getDateString(void){
 	string str;
 	str += to_string(month);
-//	str += "/";
-//	str += to_string(day);
-//	str += "/";
-//	str += to_string(year);
+	str += "/";
+	str += to_string(day);
+	str += "/";
+	str += to_string(year);
 	return str;
 }
 
