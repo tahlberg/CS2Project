@@ -21,6 +21,7 @@ public:
 	Date getExpirationDate(void);
 	int getCalories(void);
 	int getFat(void);
+	string whoAmI();
 private:
 	Date expirationDate;
 	int calories;

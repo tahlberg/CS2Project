@@ -34,3 +34,6 @@ int FoodItem::getCalories(void){
 int FoodItem::getFat(void){
 	return this->fat;
 }
+string FoodItem::whoAmI(){
+	return "FoodItem";
+}

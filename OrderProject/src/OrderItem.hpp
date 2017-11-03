@@ -33,6 +33,7 @@ public:
 	double getCustomerCost(void);
 	double getVendorCost(void);
 	bool getTaxExempt(void);
+	virtual string whoAmI() = 0;
 private:
 	string itemNumber;
 	string itemDescription;

@@ -34,3 +34,6 @@ Date MediaItem::getPublicationDate(void){
 string MediaItem::getISBNNumber(void){
 	return this->ISBNNumber;
 }
+string MediaItem::whoAmI(){
+	return "MediaItem";
+}

@@ -18,6 +18,7 @@ public:
 	void setWarrantyMonths(int);
 	Type getEType(void);
 	int getWarrantyMonths(void);
+	string whoAmI();
 private:
 	Type eType;
 	int warrantyMonths;

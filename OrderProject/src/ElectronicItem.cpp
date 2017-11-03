@@ -28,3 +28,6 @@ Type ElectronicItem::getEType(void){
 int ElectronicItem::getWarrantyMonths(void){
 	return this->warrantyMonths;
 }
+string ElectronicItem::whoAmI(){
+	return "ElectronicItem";
+}

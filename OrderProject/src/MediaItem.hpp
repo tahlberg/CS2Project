@@ -21,6 +21,7 @@ public:
 	string getAuthorName(void);
 	Date getPublicationDate(void);
 	string getISBNNumber(void);
+	string whoAmI();
 private:
 	string authorName;
 	Date publicationDate;
