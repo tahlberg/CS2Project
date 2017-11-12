@@ -22,6 +22,7 @@ public:
 	Date getPublicationDate(void);
 	string getISBNNumber(void);
 	string whoAmI();
+	MediaItem(fstream&);
 private:
 	string authorName;
 	Date publicationDate;

@@ -37,3 +37,47 @@ string MediaItem::getISBNNumber(void){
 string MediaItem::whoAmI(){
 	return "MediaItem";
 }
+
+MediaItem::MediaItem(fstream& fin){
+	string oNum;
+	string iNum;
+	string iName;
+	int qItem;
+	double cCost;
+	double vCost;
+	char tExempt;
+	int y;
+	int m;
+	int d;
+	string aName;
+	string ISBN;
+
+	fin >> oNum;
+	fin >> iNum;
+	fin >> iName;
+	fin >> qItem;
+	fin >> cCost;
+	fin >> vCost;
+	fin >> tExempt;
+	fin >> y;
+	fin >> m;
+	fin >> d;
+	fin >> aName;
+	fin >> ISBN;
+
+	this->setItemNumber(iNum);
+	this->setItemDescription(iName);
+	this->setQuantity(qItem);
+	this->setCustomerCost(cCost);
+	this->setVendorCost(vCost);
+	if(tExempt == 'T'){
+		this->setTaxExempt(true);
+	}else{
+		this->setTaxExempt(false);
+	}
+	Date pubDate(m, d, y);
+	this->setPublicationDate(pubDate);
+	this->setAuthorName(aName);
+	this->setISBNNumber(ISBN);
+
+}

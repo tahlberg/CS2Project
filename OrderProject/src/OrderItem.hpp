@@ -8,6 +8,7 @@
 #ifndef ORDERITEM_HPP_
 #define ORDERITEM_HPP_
 #include <string>
+#include <fstream>
 using namespace std;
 
 enum Type{

@@ -23,6 +23,10 @@ public:
 	Date getOrderDate(void);
 	vector<OrderItem*> getItemsInOrder(void);
 	Customer getOrderCustomer(void);
+	void readFoodItems();
+	void readMediaItems();
+	void readElectronicItems();
+	double getTotalOfOrder();
 private:
 	string orderNumber;
 	Date orderDate;
