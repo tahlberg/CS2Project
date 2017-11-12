@@ -22,7 +22,6 @@ public:
 	int getCalories(void);
 	int getFat(void);
 	string whoAmI();
-	FoodItem(fstream&);
 private:
 	Date expirationDate;
 	int calories;

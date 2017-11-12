@@ -52,7 +52,6 @@ void Order::readFoodItems(){
 	}
 	else{
 		while(!foodStream.eof()){
-			FoodItem *fItem = new FoodItem;
 			string oNum;
 			string iNum;
 			string iName;
@@ -78,25 +77,24 @@ void Order::readFoodItems(){
 			foodStream >> d;
 			foodStream >> cal;
 			foodStream >> iFat;
-
-			fItem->setItemNumber(iNum);
-			fItem->setItemDescription(iName);
-			fItem->setQuantity(qItem);
-			fItem->setCustomerCost(cCost);
-			fItem->setVendorCost(vCost);
-			if(tExempt == 'T'){
-				fItem->setTaxExempt(true);
-			}else{
-				fItem->setTaxExempt(false);
-			}
-			Date expDate(m, d, y);
-			fItem->setExpirationDate(expDate);
-			fItem->setCalories(cal);
-			fItem->setFat(iFat);
-			if(this->orderNumber == oNum){
+			if(oNum == this->orderNumber){
+				FoodItem *fItem = new FoodItem;
+				fItem->setItemNumber(iNum);
+				fItem->setItemDescription(iName);
+				fItem->setQuantity(qItem);
+				fItem->setCustomerCost(cCost);
+				fItem->setVendorCost(vCost);
+				if(tExempt == 'T'){
+					fItem->setTaxExempt(true);
+				}else{
+					fItem->setTaxExempt(false);
+				}
+				Date expDate(m, d, y);
+				fItem->setExpirationDate(expDate);
+				fItem->setCalories(cal);
+				fItem->setFat(iFat);
 				this->itemsInOrder.push_back(fItem);
 			}
-			delete fItem;
 		}
 		foodStream.close();
 	}
@@ -109,7 +107,6 @@ void Order::readMediaItems(){
 	}
 	else{
 		while(!mediaStream.eof()){
-			MediaItem *mItem = new MediaItem;
 			string oNum;
 			string iNum;
 			string iName;
@@ -135,25 +132,24 @@ void Order::readMediaItems(){
 			mediaStream >> d;
 			mediaStream >> aName;
 			mediaStream >> ISBN;
-
-			mItem->setItemNumber(iNum);
-			mItem->setItemDescription(iName);
-			mItem->setQuantity(qItem);
-			mItem->setCustomerCost(cCost);
-			mItem->setVendorCost(vCost);
-			if(tExempt == 'T'){
-				mItem->setTaxExempt(true);
-			}else{
-				mItem->setTaxExempt(false);
-			}
-			Date pubDate(m, d, y);
-			mItem->setPublicationDate(pubDate);
-			mItem->setAuthorName(aName);
-			mItem->setISBNNumber(ISBN);
-			if(this->orderNumber == oNum){
+			if(oNum == this->orderNumber){
+				MediaItem *mItem = new MediaItem;
+				mItem->setItemNumber(iNum);
+				mItem->setItemDescription(iName);
+				mItem->setQuantity(qItem);
+				mItem->setCustomerCost(cCost);
+				mItem->setVendorCost(vCost);
+				if(tExempt == 'T'){
+					mItem->setTaxExempt(true);
+				}else{
+					mItem->setTaxExempt(false);
+				}
+				Date pubDate(m, d, y);
+				mItem->setPublicationDate(pubDate);
+				mItem->setAuthorName(aName);
+				mItem->setISBNNumber(ISBN);
 				this->itemsInOrder.push_back(mItem);
 			}
-			delete mItem;
 		}
 		mediaStream.close();
 	}
@@ -166,7 +162,6 @@ void Order::readElectronicItems(){
 	}
 	else{
 		while(!electronicStream.eof()){
-			ElectronicItem *eItem = new ElectronicItem;
 			string oNum;
 			string iNum;
 			string iName;
@@ -186,22 +181,22 @@ void Order::readElectronicItems(){
 			electronicStream >> tExempt;
 			electronicStream >> elecType;
 			electronicStream >> wMonth;
-			eItem->setItemNumber(iNum);
-			eItem->setItemDescription(iName);
-			eItem->setQuantity(qItem);
-			eItem->setCustomerCost(cCost);
-			eItem->setVendorCost(vCost);
-			if(tExempt == 'T'){
-				eItem->setTaxExempt(true);
-			}else{
-				eItem->setTaxExempt(false);
-			}
-			eItem->setEType(static_cast<Type>(elecType));
-			eItem->setWarrantyMonths(wMonth);
-			if(this->orderNumber == oNum){
+			if(oNum == this->orderNumber){
+				ElectronicItem *eItem = new ElectronicItem;
+				eItem->setItemNumber(iNum);
+				eItem->setItemDescription(iName);
+				eItem->setQuantity(qItem);
+				eItem->setCustomerCost(cCost);
+				eItem->setVendorCost(vCost);
+				if(tExempt == 'T'){
+					eItem->setTaxExempt(true);
+				}else{
+					eItem->setTaxExempt(false);
+				}
+				eItem->setEType(static_cast<Type>(elecType));
+				eItem->setWarrantyMonths(wMonth);
 				this->itemsInOrder.push_back(eItem);
 			}
-			delete eItem;
 		}
 		electronicStream.close();
 	}
@@ -212,4 +207,12 @@ double Order::getTotalOfOrder(){
 		total += itemsInOrder[i]->getCustomerCost();
 	}
 	return total;
+}
+
+Order::Order(Customer *cust, string str){
+	this->orderCustomer = *cust;
+	this->orderNumber = str;
+	this->readFoodItems();
+	this->readMediaItems();
+	this->readElectronicItems();
 }

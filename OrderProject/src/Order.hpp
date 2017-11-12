@@ -30,6 +30,7 @@ public:
 	void readMediaItems();
 	void readElectronicItems();
 	double getTotalOfOrder();
+	Order(Customer*, string);
 private:
 	string orderNumber;
 	Date orderDate;
