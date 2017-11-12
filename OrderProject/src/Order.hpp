@@ -9,6 +9,9 @@
 #define ORDER_HPP_
 #include "OrderItem.hpp"
 #include "Customer.hpp"
+#include "FoodItem.hpp"
+#include "MediaItem.hpp"
+#include "ElectronicItem.hpp"
 #include <vector>
 
 class Order {

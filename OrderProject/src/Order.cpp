@@ -8,13 +8,12 @@
 #include "Order.hpp"
 #include <iostream>
 #include <fstream>
-#include "FoodItem.hpp"
-#include "MediaItem.hpp"
-#include "ElectronicItem.hpp"
 
 Order::Order() {
 	// TODO Auto-generated constructor stub
-
+	this->readFoodItems();
+	this->readMediaItems();
+	this->readElectronicItems();
 }
 
 Order::~Order() {
@@ -48,6 +47,7 @@ Customer Order::getOrderCustomer(void){
 void Order::readFoodItems(){
 	fstream foodStream("FoodItems.txt");
 	if(foodStream.fail()){
+		cout << "Failed to open FoodItems.txt" << endl;
 		return;
 	}
 	else{
@@ -93,7 +93,9 @@ void Order::readFoodItems(){
 			fItem->setExpirationDate(expDate);
 			fItem->setCalories(cal);
 			fItem->setFat(iFat);
-			this->itemsInOrder.push_back(fItem);
+			if(this->orderNumber == oNum){
+				this->itemsInOrder.push_back(fItem);
+			}
 			delete fItem;
 		}
 		foodStream.close();
@@ -102,6 +104,7 @@ void Order::readFoodItems(){
 void Order::readMediaItems(){
 	fstream mediaStream("MediaItems.txt");
 	if(mediaStream.fail()){
+		cout << "Failed to open MediaItems.txt" << endl;
 		return;
 	}
 	else{
@@ -147,7 +150,9 @@ void Order::readMediaItems(){
 			mItem->setPublicationDate(pubDate);
 			mItem->setAuthorName(aName);
 			mItem->setISBNNumber(ISBN);
-			this->itemsInOrder.push_back(mItem);
+			if(this->orderNumber == oNum){
+				this->itemsInOrder.push_back(mItem);
+			}
 			delete mItem;
 		}
 		mediaStream.close();
@@ -156,6 +161,7 @@ void Order::readMediaItems(){
 void Order::readElectronicItems(){
 	fstream electronicStream("ElectronicItems.txt");
 	if(electronicStream.fail()){
+		cout << "Failed to open ElectronicItems.txt" << endl;
 		return;
 	}
 	else{
@@ -180,7 +186,6 @@ void Order::readElectronicItems(){
 			electronicStream >> tExempt;
 			electronicStream >> elecType;
 			electronicStream >> wMonth;
-
 			eItem->setItemNumber(iNum);
 			eItem->setItemDescription(iName);
 			eItem->setQuantity(qItem);
@@ -193,14 +198,18 @@ void Order::readElectronicItems(){
 			}
 			eItem->setEType(static_cast<Type>(elecType));
 			eItem->setWarrantyMonths(wMonth);
-			this->itemsInOrder.push_back(eItem);
+			if(this->orderNumber == oNum){
+				this->itemsInOrder.push_back(eItem);
+			}
 			delete eItem;
-
-			this->itemsInOrder.push_back(eItem);
 		}
 		electronicStream.close();
 	}
 }
 double Order::getTotalOfOrder(){
-	return 0.0;
+	double total = 0.0;
+	for(unsigned int i = 0; i < this->itemsInOrder.size(); i++){
+		total += itemsInOrder[i]->getCustomerCost();
+	}
+	return total;
 }
