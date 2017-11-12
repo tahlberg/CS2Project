@@ -168,8 +168,8 @@ void Order::readElectronicItems(){
 			double cCost;
 			double vCost;
 			char tExempt;
-			Type elecType;
-			string wMonth;
+			int elecType;
+			int wMonth;
 
 			electronicStream >> oNum;
 			electronicStream >> iNum;
@@ -191,7 +191,7 @@ void Order::readElectronicItems(){
 			}else{
 				eItem->setTaxExempt(false);
 			}
-			eItem->setEType(elecType);
+			eItem->setEType(static_cast<Type>(elecType));
 			eItem->setWarrantyMonths(wMonth);
 			this->itemsInOrder.push_back(eItem);
 			delete eItem;
