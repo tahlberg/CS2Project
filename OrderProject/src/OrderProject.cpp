@@ -102,6 +102,14 @@ int main(int argc, const char* argv[]) {
 	else if(argc > 2){
 		cout << "Too many parameters! Program ending. Have a nice day." << endl;
 	}
+	for(unsigned int i = 0; i < theOrders.size(); i++){
+		delete theOrders[i];
+		theOrders[i] = nullptr;
+	}
+	for(unsigned int i = 9; i < theCustomers.size(); i++){
+		delete theCustomers[i];
+		theCustomers[i] = nullptr;
+	}
 	return 0;
 }
 
