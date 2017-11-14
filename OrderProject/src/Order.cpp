@@ -18,6 +18,9 @@ Order::Order() {
 
 Order::~Order() {
 	// TODO Auto-generated destructor stub
+	for(unsigned int i = 0; i < this->itemsInOrder.size(); i++){
+		delete itemsInOrder[i];
+	}
 }
 
 void Order::setOrderNumber(string str){
